@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DesdeElBanquilloMaui.ViewModels"
+    x:Class="DesdeElBanquilloMaui.Views.Administrators.AdministratorsListPage"
+    Title="Administradores">
+
+    <ContentPage.BindingContext>
+        <viewmodels:AdministratorsViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10" Spacing="10">
+        <SearchBar Placeholder="Buscar por nombre o email" Text="{Binding SearchText}" />
+
+        <CollectionView ItemsSource="{Binding Administrators}"
+                        SelectionMode="Single"
+                        SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Editar" BackgroundColor="LightBlue" Invoked="EditSwipe_Invoked" />
+                                <SwipeItem Text="Eliminar" BackgroundColor="LightCoral" Invoked="DeleteSwipe_Invoked" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <Grid Padding="10">
+                            <Label Text="{Binding Name}" FontSize="Medium" />
+                            <Label Text="{Binding Email}" Grid.Row="1" FontSize="Small" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Agregar nuevo administrador" Clicked="AddNew_Clicked" />
+    </StackLayout>
+</ContentPage>

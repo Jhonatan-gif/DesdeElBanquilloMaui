@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DesdeElBanquilloMaui.ViewModels"
+    x:Class="DesdeElBanquilloMaui.Views.Competitions.CompetitionsListPage"
+    Title="Competitions">
+
+    <ContentPage.BindingContext>
+        <viewmodels:CompetitionsViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10" Spacing="10">
+        <SearchBar Placeholder="Buscar por nombre o temporada" Text="{Binding SearchText}" />
+
+        <CollectionView ItemsSource="{Binding Competitions}"
+                        SelectionMode="Single"
+                        SelectionChanged="CollectionView_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Label Text="{Binding Name}" FontSize="Medium" />
+                        <Label Text="{Binding Season}" Grid.Row="1" FontSize="Small" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Agregar competencia" Clicked="AddNew_Clicked" />
+    </StackLayout>
+</ContentPage>

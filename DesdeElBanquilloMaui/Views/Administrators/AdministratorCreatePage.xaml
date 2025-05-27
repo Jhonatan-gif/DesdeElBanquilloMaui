@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DesdeElBanquilloMaui.ViewModels"
+    x:Class="DesdeElBanquilloMaui.Views.Administrators.AdministratorCreatePage"
+    Title="Nuevo Administrador">
+
+    <ContentPage.BindingContext>
+        <viewmodels:AdministratorCreateViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+
+            <Label Text="Nombre" />
+            <Entry Text="{Binding NewAdministrator.Name}" Placeholder="Nombre" />
+
+            <Label Text="Email" />
+            <Entry Text="{Binding NewAdministrator.Email}" Keyboard="Email" Placeholder="Email" />
+
+            <Label Text="Password" />
+            <Entry Text="{Binding NewAdministrator.Password}" IsPassword="True" Placeholder="Password" />
+
+            <Label Text="Activo" />
+            <Switch IsToggled="{Binding NewAdministrator.IsActive}" />
+
+            <Button Text="Crear" Command="{Binding CreateCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

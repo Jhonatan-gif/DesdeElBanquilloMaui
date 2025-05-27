@@ -18,5 +18,10 @@ namespace DesdeElBanquilloMaui.Models
         public int AwayTeamId { get; set; }
         public int CompetitionId { get; set; }
         public int? StadiumId { get; set; }
+
+        public static implicit operator Match(System.Text.RegularExpressions.Match v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

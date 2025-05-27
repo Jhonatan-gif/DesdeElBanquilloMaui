@@ -1,15 +1,20 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Shell
-    x:Class="DesdeElBanquilloMaui.AppShell"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:DesdeElBanquilloMaui"
-    Shell.FlyoutBehavior="Disabled"
-    Title="DesdeElBanquilloMaui">
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:viewsAdministrators="clr-namespace:DesdeElBanquilloMaui.Views.Administrators"
+       xmlns:viewsCompetitions="clr-namespace:DesdeElBanquilloMaui.Views.Competitions"
+       xmlns:viewsTeams="clr-namespace:DesdeElBanquilloMaui.Views.Teams"
+       xmlns:viewsPlayers="clr-namespace:DesdeElBanquilloMaui.Views.Players"
+       xmlns:viewsMatches="clr-namespace:DesdeElBanquilloMaui.Views.Matches"
+       xmlns:viewsUserProfile="clr-namespace:DesdeElBanquilloMaui.Views.UserProfile"
+       x:Class="DesdeElBanquilloMaui.AppShell">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent Title="Administradores" ContentTemplate="{DataTemplate viewsAdministrators:AdministratorsListPage}" Icon="admin_icon.png" />
+        <ShellContent Title="Competencias" ContentTemplate="{DataTemplate viewsCompetitions:CompetitionsListPage}" Icon="competition_icon.png" />
+        <ShellContent Title="Equipos" ContentTemplate="{DataTemplate viewsTeams:TeamsListPage}" Icon="team_icon.png" />
+        <ShellContent Title="Jugadores" ContentTemplate="{DataTemplate viewsPlayers:PlayersListPage}" Icon="player_icon.png" />
+        <ShellContent Title="Partidos" ContentTemplate="{DataTemplate viewsMatches:MatchesListPage}" Icon="match_icon.png" />
+        <ShellContent Title="Perfil" ContentTemplate="{DataTemplate viewsUserProfile:UserProfilePage}" Icon="profile_icon.png" />
+    </TabBar>
 
 </Shell>
