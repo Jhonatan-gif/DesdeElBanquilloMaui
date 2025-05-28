@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DesdeElBanquilloMaui.ViewModels"
+    x:Class="DesdeElBanquilloMaui.Views.Teams.TeamDetailPage"
+    Title="Detalle Equipo">
+
+    <ContentPage.BindingContext>
+        <viewmodels:TeamDetailViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+
+            <Label Text="Nombre" />
+            <Entry Text="{Binding Team.Name}" Placeholder="Nombre" />
+
+            <Label Text="Ciudad" />
+            <Entry Text="{Binding Team.City}" Placeholder="Ciudad" />
+
+            <Label Text="Fecha Fundación" />
+            <DatePicker Date="{Binding Team.FoundedDate}" />
+
+            <Label Text="Competición" />
+            <Picker ItemsSource="{Binding Competitions}" SelectedItem="{Binding SelectedCompetition}" />
+
+            <Label Text="País" />
+            <Picker ItemsSource="{Binding Countries}" SelectedItem="{Binding SelectedCountry}" />
+
+            <Label Text="Liga" />
+            <Picker ItemsSource="{Binding Leagues}" SelectedItem="{Binding SelectedLeague}" />
+
+            <Label Text="Estadio" />
+            <Label Text="{Binding StadiumInfo}" />
+
+            <Button Text="Guardar" Command="{Binding SaveCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

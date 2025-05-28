@@ -10,12 +10,12 @@ public partial class TeamsListPage : ContentPage
     public TeamsListPage()
     {
         InitializeComponent();
-        this.Appearing += async (_, _) => await ViewModel.LoadCommand.ExecuteAsync(null);
+        this.Appearing += async (_, _) =>  ViewModel.LoadCommand.Execute(null);
     }
 
     private async void AddNew_Clicked(object sender, EventArgs e)
     {
-        // Navegar a creación detalle equipo (no implementado en este ejemplo)
+        await Shell.Current.GoToAsync(nameof(TeamDetailPage) + "?isNew=true");
     }
 
     private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -23,7 +23,9 @@ public partial class TeamsListPage : ContentPage
         var team = e.CurrentSelection.FirstOrDefault() as Team;
         if (team != null)
         {
-            // Navegar a detalle equipo (no implementado en este ejemplo)
+            await Shell.Current.GoToAsync($"{nameof(TeamDetailPage)}?IdTeam={team.IdTeam}");
+
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }

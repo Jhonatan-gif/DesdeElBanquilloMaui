@@ -18,8 +18,6 @@
             <Label Text="Temporada" />
             <Entry Text="{Binding Competition.Season}" Placeholder="Temporada" />
 
-            <!-- Aquí agregas Pickers para País y Federación según tu modelo -->
-
             <Button Text="Guardar" Command="{Binding SaveCommand}" />
             <Button Text="Eliminar" Command="{Binding DeleteCommand}" BackgroundColor="Red" TextColor="White" />
         </VerticalStackLayout>

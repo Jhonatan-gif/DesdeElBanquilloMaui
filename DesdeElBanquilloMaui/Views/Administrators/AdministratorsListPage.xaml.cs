@@ -11,7 +11,7 @@ public partial class AdministratorsListPage : ContentPage
     public AdministratorsListPage()
     {
         InitializeComponent();
-        Appearing += async (_, _) => await ViewModel.LoadCommand.ExecuteAsync(null);
+        Appearing += async (_, _) =>  ViewModel.LoadCommand.Execute(null);
     }
 
     private async void AddNew_Clicked(object sender, EventArgs e)
@@ -36,7 +36,7 @@ public partial class AdministratorsListPage : ContentPage
             bool answer = await DisplayAlert("Confirmar", $"Eliminar administrador {admin.Name}?", "Sí", "No");
             if (answer)
             {
-                await ViewModel.DeleteCommand.ExecuteAsync(admin);
+               ViewModel.DeleteCommand.Execute(admin);
             }
         }
     }

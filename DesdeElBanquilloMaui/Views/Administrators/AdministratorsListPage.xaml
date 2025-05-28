@@ -27,6 +27,11 @@
                         </SwipeView.RightItems>
 
                         <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
                             <Label Text="{Binding Name}" FontSize="Medium" />
                             <Label Text="{Binding Email}" Grid.Row="1" FontSize="Small" />
                         </Grid>

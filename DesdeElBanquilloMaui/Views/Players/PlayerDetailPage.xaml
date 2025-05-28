@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:DesdeElBanquilloMaui.ViewModels"
+    x:Class="DesdeElBanquilloMaui.Views.Players.PlayerDetailPage"
+    Title="Detalle Jugador">
+
+    <ContentPage.BindingContext>
+        <viewmodels:PlayerDetailViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+
+            <Label Text="Nombre" />
+            <Entry Text="{Binding Player.Name}" Placeholder="Nombre" />
+
+            <Label Text="Edad" />
+            <Entry Keyboard="Numeric" Text="{Binding Player.Age}" />
+
+            <Label Text="Número de Camiseta" />
+            <Entry Keyboard="Numeric" Text="{Binding Player.JerseyNumber}" />
+
+            <Label Text="Valor de Mercado" />
+            <Entry Keyboard="Numeric" Text="{Binding Player.MarketValue}" />
+
+            <Label Text="Fecha de Nacimiento" />
+            <DatePicker Date="{Binding Player.BirthDate}" />
+
+            <Label Text="Altura (m)" />
+            <Entry Keyboard="Numeric" Text="{Binding Player.Height}" />
+
+            <Label Text="Peso (kg)" />
+            <Entry Keyboard="Numeric" Text="{Binding Player.Weight}" />
+
+            <Label Text="Equipo" />
+            <Picker ItemsSource="{Binding Teams}" SelectedItem="{Binding SelectedTeam}" />
+
+            <Label Text="Posición" />
+            <Picker ItemsSource="{Binding Positions}" SelectedItem="{Binding SelectedPosition}" />
+
+            <Label Text="País" />
+            <Picker ItemsSource="{Binding Countries}" SelectedItem="{Binding SelectedCountry}" />
+
+            <Button Text="Guardar" Command="{Binding SaveCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

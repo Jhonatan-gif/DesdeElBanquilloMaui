@@ -10,12 +10,12 @@ public partial class PlayersListPage : ContentPage
     public PlayersListPage()
     {
         InitializeComponent();
-        this.Appearing += async (_, _) => await ViewModel.LoadCommand.ExecuteAsync(null);
+        this.Appearing += async (_, _) =>  ViewModel.LoadCommand.Execute(null);
     }
 
     private async void AddNew_Clicked(object sender, EventArgs e)
     {
-        // Navegar a creación jugador (no implementado en este ejemplo)
+        await Shell.Current.GoToAsync(nameof(PlayerDetailPage) + "?isNew=true");
     }
 
     private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -23,7 +23,9 @@ public partial class PlayersListPage : ContentPage
         var player = e.CurrentSelection.FirstOrDefault() as Player;
         if (player != null)
         {
-            // Navegar a detalle jugador (no implementado en este ejemplo)
+            await Shell.Current.GoToAsync($"{nameof(PlayerDetailPage)}?IdPlayer={player.IdPlayer}");
+
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }

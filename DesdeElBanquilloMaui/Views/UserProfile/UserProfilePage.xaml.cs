@@ -8,7 +8,7 @@ public partial class UserProfilePage : ContentPage
         this.Appearing += async (_, _) =>
         {
             if (BindingContext is ViewModels.UserProfileViewModel vm)
-                await vm.LoadUserCommand.ExecuteAsync(null);
+                 vm.LoadUserCommand.Execute(null);
         };
     }
 }

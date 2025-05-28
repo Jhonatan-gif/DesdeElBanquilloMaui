@@ -10,12 +10,11 @@ public partial class CompetitionsListPage : ContentPage
     public CompetitionsListPage()
     {
         InitializeComponent();
-        this.Appearing += async (_, _) => await ViewModel.LoadCommand.ExecuteAsync(null);
+        this.Appearing += async (_, _) =>  ViewModel.LoadCommand.Execute(null);
     }
 
     private async void AddNew_Clicked(object sender, EventArgs e)
     {
-        // Aquí navega a página crear competencia (por implementar)
         await Shell.Current.GoToAsync(nameof(CompetitionDetailPage));
     }
 

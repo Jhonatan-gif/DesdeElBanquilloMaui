@@ -10,12 +10,12 @@ public partial class MatchesListPage : ContentPage
     public MatchesListPage()
     {
         InitializeComponent();
-        this.Appearing += async (_, _) => await ViewModel.LoadCommand.ExecuteAsync(null);
+        this.Appearing += async (_, _) =>  ViewModel.LoadCommand.Execute(null);
     }
 
     private async void AddNew_Clicked(object sender, EventArgs e)
     {
-        // Navegar a creación partido (no implementado en este ejemplo)
+        await Shell.Current.GoToAsync(nameof(MatchDetailPage) + "?isNew=true");
     }
 
     private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -23,7 +23,9 @@ public partial class MatchesListPage : ContentPage
         var match = e.CurrentSelection.FirstOrDefault() as Match;
         if (match != null)
         {
-            // Navegar a detalle partido (no implementado en este ejemplo)
+            await Shell.Current.GoToAsync($"{nameof(MatchDetailPage)}?IdMatch={match.IdMatch}");
+
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }
